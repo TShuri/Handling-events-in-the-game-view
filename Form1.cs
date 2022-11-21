@@ -4,11 +4,11 @@ namespace Event_Handling
 {
     public partial class Form1 : Form
     {
-        MyRectangle myRect;
+        MyRectangle myRect; // Создадим поле под прямоугольник
         public Form1()
         {
             InitializeComponent();
-            myRect = new MyRectangle(0, 0, 0);
+            myRect = new MyRectangle(0, 0, 0); // Создание экземпляра класса
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)
