@@ -5,21 +5,26 @@ namespace Event_Handling
     public partial class Form1 : Form
     {
         MyRectangle myRect; // Создадим поле под прямоугольник
+        List<BaseObject> objects = new(); // Список объектов
         public Form1()
         {
             InitializeComponent();
-            myRect = new MyRectangle(0, 0, 0); // Создание экземпляра класса
+
+            objects.Add(new MyRectangle(100, 100, 45));
+            objects.Add(new MyRectangle(50, 50, 0));
+            objects.Add(new MyRectangle(150, 150, 30));
         }
 
         private void pbMain_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
             g.Clear(Color.White);
-            /*
-            g.FillRectangle(new SolidBrush(Color.Yellow), 200, 100, 50, 30);
-            g.DrawRectangle(new Pen(Color.Red, 2), 200, 100, 50, 30);
-            */
-            myRect.Render(g);
+
+            foreach(var obj in objects)
+            {
+                g.Transform = obj.GetTransform();
+                obj.Render(g);
+            }
         }
     }
 }
