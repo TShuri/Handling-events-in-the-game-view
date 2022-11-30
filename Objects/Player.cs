@@ -10,6 +10,9 @@ namespace Event_Handling.Objects
     class Player : BaseObject
     {
         public Action<Marker> OnMarkerOverlap;
+        public Action<Target> OnTargetOverlap;
+        public Action<Danger> OnDangerOverlap;
+        public float vX, vY;
 
         public Player(float x, float y, float angle) : base(x, y, angle)
         {
@@ -46,6 +49,14 @@ namespace Event_Handling.Objects
             if (obj is Marker)
             {
                 OnMarkerOverlap(obj as Marker);
+            }
+            else if (obj is Target)
+            {
+                OnTargetOverlap(obj as Target);
+            }
+            else if (obj is Danger)
+            {
+                OnDangerOverlap(obj as Danger);
             }
         }
     }

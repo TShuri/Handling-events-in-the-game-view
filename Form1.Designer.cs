@@ -32,6 +32,7 @@
             this.pbMain = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.counter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             // 
             this.pbMain.Location = new System.Drawing.Point(12, 12);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(939, 528);
+            this.pbMain.Size = new System.Drawing.Size(901, 528);
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
             this.pbMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMain_Paint);
@@ -53,23 +54,34 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(764, 12);
+            this.txtLog.Location = new System.Drawing.Point(919, 12);
             this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(187, 528);
+            this.txtLog.Size = new System.Drawing.Size(348, 528);
             this.txtLog.TabIndex = 1;
             this.txtLog.Text = "";
+            // 
+            // counter
+            // 
+            this.counter.AutoSize = true;
+            this.counter.Location = new System.Drawing.Point(821, 15);
+            this.counter.Name = "counter";
+            this.counter.Size = new System.Drawing.Size(79, 25);
+            this.counter.TabIndex = 2;
+            this.counter.Text = "Points: 0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 552);
+            this.ClientSize = new System.Drawing.Size(1279, 552);
+            this.Controls.Add(this.counter);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.pbMain);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -78,5 +90,6 @@
         private PictureBox pbMain;
         private System.Windows.Forms.Timer timer1;
         private RichTextBox txtLog;
+        private Label counter;
     }
 }

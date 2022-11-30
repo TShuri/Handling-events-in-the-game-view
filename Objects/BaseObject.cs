@@ -43,7 +43,7 @@ namespace Event_Handling.Objects
         public virtual bool Overlaps(BaseObject obj, Graphics g)
         {
             var path1 = this.GetGraphicsPath();
-            var path2 = this.GetGraphicsPath();
+            var path2 = obj.GetGraphicsPath();
 
             path1.Transform(this.GetTransform());
             path2.Transform(obj.GetTransform());
@@ -58,6 +58,7 @@ namespace Event_Handling.Objects
             if (this.OnOverlap != null)
             {
                 this.OnOverlap(this, obj);
+                //this.OOverlap(this, obj);
             }
         }
     }
