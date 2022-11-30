@@ -14,14 +14,17 @@ namespace Event_Handling.Objects
         public Danger(float x, float y, float angle) : base(x, y, angle)
         {
             this.size = 5;
+            defaultColor = Color.IndianRed;
+            color = defaultColor;
         }
 
         public override void Render(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.IndianRed), -2 * size, -2 * size, 3 * size, 3 * size);
+            g.FillEllipse(new SolidBrush(color), -2 * size, -2 * size, 3 * size, 3 * size);
             g.DrawEllipse(new Pen(Color.IndianRed, 2), -2 * size, -2 * size, 3 * size, 3 * size);
             //g.FillEllipse(new SolidBrush(Color.IndianRed), -1 * size, 1 * size, size, size);
             //g.DrawEllipse(new Pen(Color.IndianRed, 2), -1 * size, -1 * size, size, size);
+            CheckColor();
 
             size += 1;
         }

@@ -12,6 +12,8 @@ namespace Event_Handling.Objects
         public float X;
         public float Y;
         public float Angle;
+        public Color defaultColor;
+        public Color color;
 
         public Action<BaseObject, BaseObject> OnOverlap;
 
@@ -58,7 +60,14 @@ namespace Event_Handling.Objects
             if (this.OnOverlap != null)
             {
                 this.OnOverlap(this, obj);
-                //this.OOverlap(this, obj);
+            }
+        }
+
+        public void CheckColor()
+        {
+            if (color != defaultColor)
+            {
+                color = defaultColor;
             }
         }
     }

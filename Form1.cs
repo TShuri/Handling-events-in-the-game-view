@@ -8,18 +8,22 @@ namespace Event_Handling
         List<BaseObject> objects = new(); // Список объектов
         Player player; // Создание игрока
         Marker marker; // Создание маркера
-        Danger danger;
+        Danger danger; // Создание опасного круга
+        Black_area black_area; // Создание черной зоны
         int points;
         public Form1()
         {
             InitializeComponent();
             points = 0;
 
+            black_area = new Black_area(0, 0, 0, pbMain.Height, pbMain.Width);
+            objects.Add(black_area);
+
             danger = new Danger(300, 300, 0);
             objects.Add(danger);
 
-           objects.Add(new Target(800, 50, 0, 200));
-           objects.Add(new Target(300, 500, 0, 100));
+            objects.Add(new Target(800, 50, 0, 200));
+            objects.Add(new Target(300, 500, 0, 100));
 
             marker = new Marker(pbMain.Width / 2 + 50, pbMain.Height / 2 + 50, 0);
             objects.Add(marker);
@@ -68,6 +72,11 @@ namespace Event_Handling
                 {
                     player.Overlap(obj);
                     obj.Overlap(player);
+                }
+
+                if (obj != black_area && black_area.Overlaps(obj, g))
+                {
+                    black_area.ChangeFill(obj);
                 }
             }
             foreach(var obj in objects) // Цикл рендеринга объектов

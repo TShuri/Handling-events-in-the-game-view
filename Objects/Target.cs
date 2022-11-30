@@ -14,6 +14,8 @@ namespace Event_Handling.Objects
         public Target(float x, float y, float angle, int time) : base(x, y, angle)
         {
             this.Time = time;
+            defaultColor = Color.GreenYellow;
+            color = defaultColor;
         }
 
         public override void Render(Graphics g)
@@ -23,15 +25,21 @@ namespace Event_Handling.Objects
                 this.updateTime(0, 0);
             }
 
-            g.FillEllipse(new SolidBrush(Color.GreenYellow), -30, -30, 30, 30);
-            g.DrawEllipse(new Pen(Color.GreenYellow, 2), -30, -30, 30, 30);
+            g.FillEllipse(new SolidBrush(color), -30, -30, 30, 30);
+            g.DrawEllipse(new Pen(color, 2), -30, -30, 30, 30);
 
+            if (color == defaultColor)
+            {
+                color = Color.Red;
+            }
             g.DrawString(
                         Time.ToString(),
                         new Font("Verdana", 8), // шрифт и размер
-                        new SolidBrush(Color.Red), // цвет шрифта
+                        new SolidBrush(color), // цвет шрифта
                         1, 1 // точка в которой нарисовать текст
             );
+
+            CheckColor();
             Time -= 1;
         }
 

@@ -16,12 +16,14 @@ namespace Event_Handling.Objects
 
         public Player(float x, float y, float angle) : base(x, y, angle)
         {
+            defaultColor = Color.DeepSkyBlue;
+            color = defaultColor;
         }
 
         public override void Render(Graphics g)
         {
             g.FillEllipse(
-                new SolidBrush(Color.DeepSkyBlue),
+                new SolidBrush(color),
                 -15, -15,
                 30, 30
             );
@@ -33,6 +35,8 @@ namespace Event_Handling.Objects
             );
 
             g.DrawLine(new Pen(Color.Black, 2), 0, 0, 25, 0);
+
+            CheckColor();
         }
 
         public override GraphicsPath GetGraphicsPath()
